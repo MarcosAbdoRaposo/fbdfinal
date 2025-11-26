@@ -46,10 +46,12 @@
             codigo_registro: document.getElementById("codigo_registro").value,
             codigo_registro_pai: document.getElementById("codigo_registro_pai").value,
             codigo_registro_mae: document.getElementById("codigo_registro_mae").value,
-            peso_inicial: document.getElementById("peso_inicial").value,
-            data_nascimento:document.getElementById("data_nascimento").value,
+            peso_inicial: parseFloat(document.getElementById("peso_inicial").value),
+            data_nascimento: document.getElementById("data_nascimento").value,
 
             };
+
+            console.log('Jason Data:',data)
 
             // se existir id então é atualização, senão inclusão
             // Post inserir 
@@ -69,12 +71,15 @@
 
             console.log(`id:${id}`)
             console.log(`metodo:${metodo}`)
-            
-            await fetch(url, {
-            method: metodo,
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-            });
+            try {
+                await fetch(url, {
+                method: metodo,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+                });
+            } catch (erro) {
+              console.error('Erro ao chamar:', erro.message);
+            }
 
             // document.getElementById("animalForm").reset();
 
@@ -99,7 +104,11 @@
           document.getElementById("codigo_registro_pai").value = animal.codigo_registro_pai;
           document.getElementById("codigo_registro_mae").value = animal.codigo_registro_mae;
           document.getElementById("peso_inicial").value = animal.peso_inicial;
-          document.getElementById("data_nascimento").value = new Date(animal.data_nascimento).toLocaleDateString('pt-BR');
+
+          //const data_nascimento = new Date(animal.data_nascimento);
+         //document.getElementById("data_nascimento").value = new Date(animal.data_nascimento).toISOString;
+          preencherInputDate('data_nascimento', new Date(animal.data_nascimento));
+
 
           exibirFormulario()
 
@@ -177,6 +186,26 @@
           return true;
 
       }
+
+
+    function preencherInputDate(idInput, objetoData) {
+        const inputElement = document.getElementById(idInput);
+        
+        // 1. Obter o ano
+        const ano = objetoData.getFullYear();
+        
+        // 2. Obter e formatar o mês (getMonth() é base 0, por isso somamos 1)
+        const mes = String(objetoData.getMonth() + 1).padStart(2, '0');
+        
+        // 3. Obter e formatar o dia
+        const dia = String(objetoData.getDate()).padStart(2, '0');
+        
+        // 4. Montar a string no formato AAAA-MM-DD
+        const dataFormatada = `${ano}-${mes}-${dia}`;
+        
+        // 5. Atribuir ao input
+        inputElement.value = dataFormatada;
+    }
 
       //document.getElementById("animalForm").addEventListener("submit", salvarAnimal);
       carregarAnimais();

@@ -40,8 +40,8 @@ exports.listar = async (req, res) => {
 
 exports.inserir = async (req, res) => {
   try {
-    const { nome, endereco, codigo_registro, codigo_registro_pai, codigo_registro_mae, peso_inicial, data_nascimento } = req.body;
-    await db('animais').insert({ nome:nome, endereco:endereco, codigo_registro:codigo_registro, codigo_registro_pai:codigo_registro_pai, codigo_registro_mae:codigo_registro_mae, peso_inicial:peso_inicial, data_nascimento:data_nascimento });
+    const { codigo_lacre, nome_animal, codigo_registro, codigo_registro_pai, codigo_registro_mae, peso_inicial, data_nascimento } = req.body;
+    await db('animais').insert({ codigo_lacre:codigo_lacre, nome_animal:nome_animal, codigo_registro:codigo_registro, codigo_registro_pai:codigo_registro_pai, codigo_registro_mae:codigo_registro_mae, peso_inicial:peso_inicial, data_nascimento:data_nascimento });
     res.status(201).json({ mensagem: 'Animal inserido com sucesso' });
   } catch (err) {
     res.status(500).json({ erro: 'Erro ao inserir animal' });
@@ -53,9 +53,10 @@ exports.inserir = async (req, res) => {
 
 exports.atualizar = async (req, res) => {
   try {
+    console.log('Corpo da Requisição',req.body);
     const { id } = req.params;
-    const { nome, endereco, codigo_registro, codigo_registro_pai, codigo_registro_mae, peso_inicial, data_nascimento } = req.body;
-    await db('animais').where({ id }).update({ nome, endereco, codigo_registro, codigo_registro_pai, codigo_registro_mae, peso_inicial, data_nascimento });
+    const { codigo_lacre, nome_animal, codigo_registro, codigo_registro_pai, codigo_registro_mae, peso_inicial, data_nascimento } = req.body;
+    await db('animais').where({ id }).update({ codigo_lacre:codigo_lacre, nome_animal:nome_animal, codigo_registro:codigo_registro, codigo_registro_pai:codigo_registro_pai, codigo_registro_mae:codigo_registro_mae, peso_inicial:peso_inicial, data_nascimento:data_nascimento });
     res.json({ mensagem: 'Animal atualizado com sucesso' });
   } catch (err) {
     res.status(500).json({ erro: 'Erro ao atualizar animal' });

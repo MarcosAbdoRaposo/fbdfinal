@@ -28,10 +28,27 @@
     display: block;
 }
 
+.input-label {
+    
+    min-width: 210px;
+    margin-left: 50px;
+    margin-top: 35px;
+    height: 25px;
+    padding-left: 5px;
+    border-color: #262626;
+    transition: 0.25s;
+    outline: none;
+}
+
+.titulo {
+        margin-left: 50px;
+}
+
 .input-text {
     
     min-width: 210px;
-    margin: 5px;
+    margin-left: 50px;
+    margin-top: 5px;
     height: 35px;
     padding-left: 5px;
     border-radius: 10px;
