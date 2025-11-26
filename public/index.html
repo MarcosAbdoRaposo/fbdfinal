@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Animais - CRUD</title>
+    <link rel="stylesheet" href="./stylesheets/reset.css" />
+    <link rel="stylesheet" href="./stylesheets/style.css" />
+</head>
+<body>
+    <div id="nav">
+      Cadastro de Animais
+    </div>
+  
+
+  <div id="areaEdicao" hidden>
+    <div id="editArea">
+        <!-- <form id="animalForm"> -->
+        <input type="hidden" id="id" />
+
+        <label for="codigo_lacre">Cóodigo do Lacre:</label><br>
+        <input type="text" id="codigo_lacre" placeholder="Código do Lacre" required/><br>
+
+        <label for="nome_animal">Nome do Animal:</label><br>
+        <input type="text" id="nome_animal" placeholder="Nome do Animal"/><br>
+
+        <label for="codigo_registro">Código do Registro:</label><br>
+        <input type="text" id="codigo_registro" placeholder="Código do Registro"  /><br>
+
+        <label for="codigo_registro_pai">Código do Registro Pai:</label><br>
+        <input type="text" id="codigo_registro_pai" placeholder="Código do Registro Pai" /><br>
+
+        <label for="codigo_registro_mae">Código do Registro da Mãe:</label><br>
+        <input type="text" id="codigo_registro_mae" placeholder="Código do Registro da Mãe" /><br>
+
+        <label for="peso_inicial">Peso Inicial:</label><br>
+        <input type="text" id="peso_inicial" placeholder="Peso Inicial" /><br>
+
+            
+        <label for="data_nascimento">Data de Nascimento:</label><br>
+        <input type="text" id="data_nascimento" placeholder="Data de Nascimento" type="date"/>
+
+
+        <div class="container-botoes">
+            <!-- <button type="submit">Salvar</button> -->
+
+            <button onclick="salvarAnimal(1)">Salvar</button>
+            <button onclick="ocultarFormulario()">Cancelar</button>
+
+        </div>
+    </div>
+      
+    
+   <!-- </form> -->
+  </div>
+
+  <div id="areaLista">
+    <div class="header-com-botao">
+        <h2> Lista Completa de Animais</h2>
+        <button id="btnInclusao" onclick="novoAnimal()">Inclusão</button>
+    </div>
+  
+  <table id="myTable">
+    <thead>
+      <tr>
+          <th>Ordem</th>
+          <th>Lacre</th>
+          <th>Nome</th>
+          <th>Registro</th>
+          <th>Registro do Pai</th>
+          <th>Registro da Mãe</th>
+          <th>Peso Inicial</th>
+          <th>Data de Nascimento</th>
+          <th>Operação</th>
+      </tr>
+    </thead>
+    <tbody id="clientTable"></tbody>
+  </table>
+  </div>
+  
+  <script src="./javascripts/crudanimais.js"></script>
+
+</body>
+</html>
