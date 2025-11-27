@@ -108,11 +108,7 @@
           //const data_nascimento = new Date(animal.data_nascimento);
          //document.getElementById("data_nascimento").value = new Date(animal.data_nascimento).toISOString;
           preencherInputDate('data_nascimento', new Date(animal.data_nascimento));
-
-
           exibirFormulario()
-
-
 
       }
 

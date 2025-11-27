@@ -1,0 +1,29 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "-03:00";
+
+
+--
+-- Banco de dados: facsenac
+--
+CREATE DATABASE IF NOT EXISTS boizinho DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE boizinho;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela Clientes
+
+
+CREATE TABLE IF NOT EXISTS animais(
+	id int auto_increment primary key,
+    codigo_lacre varchar(255) not null,  
+    nome_animal varchar(255) not null,   
+    codigo_registro varchar(255) not null, 
+    codigo_registro_pai varchar(255) not null, 
+    codigo_registro_mae varchar(255) not null, 
+    peso_inicial decimal(10,2), EMAIL
+    data_nascimento date  TELEFONE
+)  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+COMMIT;
